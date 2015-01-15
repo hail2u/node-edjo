@@ -20,14 +20,35 @@ console.log(postcss(function (css) {
       return;
     }
 
+    decl.prefix = '';
+
+    if (decl.prop.indexOf('-') === 0) {
+      var m = /^-(moz|ms|o|webkit)-(.*)$/.exec(decl.prop);
+      decl.prefix = m[1];
+      decl.prop = m[2];
+    }
+
     var d = decl.prop + decl.value;
 
     if (!decls[d]) {
       decls[d] = {
+        prefixes: {
+          moz: false,
+          ms: false,
+          o: false,
+          webkit: false,
+          none: false
+        },
         prop: decl.prop,
         selectors: [],
         value: decl.value
       };
+    }
+
+    if (decl.prefix) {
+      decls[d].prefixes[decl.prefix] = true;
+    } else {
+      decls[d].prefixes.none = true;
     }
 
     decls[d].selectors = decls[d].selectors.concat(rule.selectors);
@@ -35,7 +56,23 @@ console.log(postcss(function (css) {
 
   for (var decl in decls) {
     var d = decls[decl];
-    edjo += d.selectors.join(',\n') + ' {\n  ' + d.prop + ': ' + d.value + ';\n}\n\n';
+    var props = '';
+
+    for (var prefix in d.prefixes) {
+      if (!d.prefixes[prefix]) {
+        continue;
+      }
+
+      if (prefix !== 'none') {
+        prefix = '-' + prefix + '-';
+      } else {
+        prefix = '';
+      }
+
+      props += '  ' + prefix + d.prop + ': ' + d.value + ';\n';
+    }
+
+    edjo += d.selectors.join(',\n') + ' {\n' + props + '}\n\n';
   }
 
   return postcss.parse(edjo);
