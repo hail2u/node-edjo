@@ -72,7 +72,13 @@ console.log(postcss(function (css) {
       props += '  ' + prefix + d.prop + ': ' + d.value + ';\n';
     }
 
-    edjo += d.selectors.join(',\n') + ' {\n' + props + '}\n\n';
+    edjo += d.selectors.reduce(function (a, b) {
+      if (a.indexOf(b) < 0) {
+        a.push(b);
+      }
+
+      return a;
+    }, []).join(',\n') + ' {\n' + props + '}\n\n';
   }
 
   return postcss.parse(edjo);
