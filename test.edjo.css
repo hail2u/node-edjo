@@ -4,9 +4,6 @@ html {
 
 html {
   -ms-text-size-adjust: 100%;
-}
-
-html {
   -webkit-text-size-adjust: 100%;
 }
 
@@ -203,10 +200,7 @@ figure {
 hr,
 input[type=search] {
   -moz-box-sizing: content-box;
-}
-
-hr,
-input[type=search] {
+  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 
@@ -299,6 +293,7 @@ img,
 video,
 .icon-list a,
 .searchbox .query {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -311,10 +306,6 @@ video {
 
 input[type=search] {
   -webkit-appearance: textfield;
-}
-
-input[type=search] {
-  -webkit-box-sizing: content-box;
 }
 
 input[type=search]::-webkit-search-cancel-button,
@@ -410,15 +401,7 @@ table {
 .section-footer p,
 .read-older p {
   -moz-font-feature-settings: normal;
-}
-
-.section-footer p,
-.read-older p {
   -webkit-font-feature-settings: normal;
-}
-
-.section-footer p,
-.read-older p {
   font-feature-settings: normal;
 }
 
@@ -505,7 +488,6 @@ h1 a,
 .seealso a,
 .seemore a,
 .topic a,
-.seealso a,
 .topic .section-footer+p::after {
   color: #18b;
 }
@@ -568,13 +550,7 @@ body {
 
 html {
   -moz-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
-}
-
-html {
   -webkit-font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
-}
-
-html {
   font-feature-settings: "kern" 1,"liga" 1,"lnum" 1,"pnum" 1;
 }
 
@@ -643,13 +619,7 @@ a,
 
 pre {
   -moz-font-feature-settings: "kern" 0,"liga" 0,"pnum" 0,"tnum" 1,"zero" 1;
-}
-
-pre {
   -webkit-font-feature-settings: "kern" 0,"liga" 0,"pnum" 0,"tnum" 1,"zero" 1;
-}
-
-pre {
   font-feature-settings: "kern" 0,"liga" 0,"pnum" 0,"tnum" 1,"zero" 1;
 }
 
@@ -782,13 +752,6 @@ del {
 
 img,
 video,
-.icon-list a,
-.searchbox .query {
-  -moz-box-sizing: border-box;
-}
-
-img,
-video,
 table {
   max-width: 100%;
 }
@@ -805,13 +768,7 @@ figure video {
 
 table {
   -moz-font-feature-settings: "pnum" 0,"tnum" 1,"zero" 1;
-}
-
-table {
   -webkit-font-feature-settings: "pnum" 0,"tnum" 1,"zero" 1;
-}
-
-table {
   font-feature-settings: "pnum" 0,"tnum" 1,"zero" 1;
 }
 
