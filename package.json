@@ -1,0 +1,16 @@
+{
+  "name": "edjo",
+  "version": "0.1.0",
+  "description": "Convert CSS file into Every Declaration Just Once format.",
+  "author": "Kyo Nagashima <hail2u@gmail.com> (https://kyonagashima.com/)",
+  "bin": {
+    "edjo": "index.js"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://hail2u.mit-license.org/2015"
+  },
+  "dependencies": {
+    "postcss": "^4.0.1"
+  }
+}
