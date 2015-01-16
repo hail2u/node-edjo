@@ -54,13 +54,13 @@ console.log(postcss(function (css) {
     decls[d].selectors = decls[d].selectors.concat(rule.selectors);
   });
 
-  for (var decl in decls) {
+  Object.keys(decls).forEach(function (decl) {
     var d = decls[decl];
     var props = '';
 
-    for (var prefix in d.prefixes) {
+    Object.keys(d.prefixes).forEach(function (prefix, i, prefixes) {
       if (!d.prefixes[prefix]) {
-        continue;
+        return;
       }
 
       if (prefix !== 'none') {
@@ -70,7 +70,7 @@ console.log(postcss(function (css) {
       }
 
       props += '  ' + prefix + d.prop + ': ' + d.value + ';\n';
-    }
+    });
 
     edjo += d.selectors.reduce(function (a, b) {
       if (a.indexOf(b) < 0) {
@@ -79,7 +79,7 @@ console.log(postcss(function (css) {
 
       return a;
     }, []).join(',\n') + ' {\n' + props + '}\n\n';
-  }
+  });
 
   return postcss.parse(edjo);
 }).process(input).css);
