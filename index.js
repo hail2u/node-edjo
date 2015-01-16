@@ -8,7 +8,7 @@ var postcss = require('postcss');
 var input = fs.readFileSync(process.argv[2], 'utf8');
 console.log(postcss(function (css) {
   var decls = {};
-  var edjo = postcss.root();
+  var edjo = '';
   css.eachDecl(function (decl) {
     var rule = decl.parent;
 
