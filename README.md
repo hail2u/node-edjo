@@ -20,3 +20,9 @@ Convert:
 Dump declarations as JSON:
 
     $ edjo --dump input.css > output.json
+
+
+LICENSE
+-------
+
+MIT: http://hail2u.mit-license.org/2015
