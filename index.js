@@ -5,7 +5,14 @@
 var fs = require('fs');
 var postcss = require('postcss');
 
-var input = fs.readFileSync(process.argv[2], 'utf8');
+var dump = false;
+var input = process.argv[2];
+
+if (input === '--dump') {
+  dump = true;
+  input = process.argv[3];
+}
+
 console.log(postcss(function (css) {
   var decls = {};
   var edjo = '';
@@ -54,6 +61,12 @@ console.log(postcss(function (css) {
     decls[d].selectors = decls[d].selectors.concat(rule.selectors);
   });
 
+  if (dump) {
+    console.log(JSON.stringify(decls, null, 2));
+
+    return postcss.parse('');
+  }
+
   Object.keys(decls).forEach(function (decl) {
     var d = decls[decl];
     var props = '';
@@ -82,4 +95,4 @@ console.log(postcss(function (css) {
   });
 
   return postcss.parse(edjo);
-}).process(input).css);
+}).process(fs.readFileSync(input, 'utf8')).css);

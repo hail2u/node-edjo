@@ -13,4 +13,10 @@ INSTALL
 USAGE
 -----
 
+Convert:
+
     $ edjo input.css > output.css
+
+Dump declarations as JSON:
+
+    $ edjo --dump input.css > output.json
