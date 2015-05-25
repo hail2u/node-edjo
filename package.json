@@ -6,10 +6,7 @@
   "bin": {
     "edjo": "index.js"
   },
-  "license": {
-    "type": "MIT",
-    "url": "http://hail2u.mit-license.org/2015"
-  },
+  "license": "MIT",
   "dependencies": {
     "postcss": "^4.0.1"
   },
